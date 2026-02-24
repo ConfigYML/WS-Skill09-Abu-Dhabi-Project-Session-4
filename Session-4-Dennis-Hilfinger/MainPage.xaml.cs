@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 
@@ -18,9 +19,9 @@ namespace Session_4_Dennis_Hilfinger
 
         private async void ImportData(object sender, EventArgs e)
         {
-            var file = await FilePicker.PickAsync(new PickOptions() 
-            { 
-                PickerTitle = "Pick a survey csv file to import" 
+            var file = await FilePicker.PickAsync(new PickOptions()
+            {
+                PickerTitle = "Pick a survey csv file to import"
             });
             if (String.IsNullOrEmpty(file.FileName))
             {
@@ -37,12 +38,12 @@ namespace Session_4_Dennis_Hilfinger
                 return;
             }
 
-            /*try
-            {*/
+            try
+            {
                 var nameParts = file.FileName.Split('_');
                 if (nameParts.Length < 5)
                 {
-                    await DisplayAlert("Info", "File name must be in the following format: WSC[YYYY]_TP09_M4_survey_[MM].csv (square brackets are to be ignored)", "Ok"); 
+                    await DisplayAlert("Info", "File name must be in the following format: WSC[YYYY]_TP09_M4_survey_[MM].csv (square brackets are to be ignored)", "Ok");
                     return;
                 }
                 if (!int.TryParse(nameParts[0].Split("WSC")[1], out int Year))
@@ -62,12 +63,27 @@ namespace Session_4_Dennis_Hilfinger
                 }
                 using (var db = new AirlineContext())
                 {
-                    db.Surveys.Add(new Survey()
+                    Survey surv;
+                    if (db.Surveys.Any(s => s.Year == Year && s.Month == Month))
                     {
-                        Year = Year,
-                        Month = Month
-                    });
-                    await db.SaveChangesAsync();
+                        var accepted = await DisplayAlert("Info", "Survey data for this month already exists. Do you still want to add your results?", "Yes", "No");
+                        if (!accepted)
+                        {
+                            return;
+                        }
+                        surv = await db.Surveys.FirstOrDefaultAsync(s => s.Year == Year && s.Month == Month);
+                    }
+                    else
+                    {
+                        db.Surveys.Add(new Survey()
+                        {
+                            Year = Year,
+                            Month = Month
+                        });
+                        await db.SaveChangesAsync();
+                        surv = await db.Surveys.FirstOrDefaultAsync(s => s.Year == Year && s.Month == Month);
+                    }
+
                     string[] lines = await File.ReadAllLinesAsync(file.FullPath);
                     bool firstLine = true;
 
@@ -85,7 +101,8 @@ namespace Session_4_Dennis_Hilfinger
                         }
                         var departureAirport = db.Airports.FirstOrDefault(a => a.IataCode == values[0]);
                         var arrivalAirport = db.Airports.FirstOrDefault(a => a.IataCode == values[1]);
-                        if (!int.TryParse(values[2], out int age)) {
+                        if (!int.TryParse(values[2], out int age))
+                        {
                             age = 0;
                         }
                         var gender = values[3];
@@ -94,30 +111,32 @@ namespace Session_4_Dennis_Hilfinger
                         var question_2 = short.Parse(values[6]);
                         var question_3 = short.Parse(values[7]);
                         var question_4 = short.Parse(values[8]);
-                    db.SurveyResults.Add(new SurveyResult()
-                    {
-                        DepartureAirportId = departureAirport == null ? null : departureAirport.Id,
-                        ArrivalAirportId = arrivalAirport == null ? null : arrivalAirport.Id,
-                        Age = age > 0 ? age : null,
-                        Gender = String.IsNullOrEmpty(gender) ? null : gender,
-                        CabinTypeId = cabinType == null ? null : cabinType.Id,
-                        Question1 = question_1,
-                        Question2 = question_2,
-                        Question3 = question_3,
-                        Question4 = question_4,
-                    });
-                    await db.SaveChangesAsync();
+                        db.SurveyResults.Add(new SurveyResult()
+                        {
+                            SurveyId = surv.Id,
+                            DepartureAirportId = departureAirport == null ? null : departureAirport.Id,
+                            ArrivalAirportId = arrivalAirport == null ? null : arrivalAirport.Id,
+                            Age = age > 0 ? age : null,
+                            Gender = String.IsNullOrEmpty(gender) ? null : gender,
+                            CabinTypeId = cabinType == null ? null : cabinType.Id,
+                            Question1 = question_1,
+                            Question2 = question_2,
+                            Question3 = question_3,
+                            Question4 = question_4,
+                        });
+                        await db.SaveChangesAsync();
+                    }
                 }
-                }
-            /*} catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 string message = ex.Message;
                 await DisplayAlert("Error", "Something went wrong while processing the data to be imported. Please check if the file you provided isn't being used by another process and if the file is correctly formatted.", "Ok");
-            }*/
+            }
 
         }
 
 
     }
-    
+
 }

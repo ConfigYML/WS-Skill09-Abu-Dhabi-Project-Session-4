@@ -3,25 +3,325 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Session_4_Dennis_Hilfinger.DetailedResultsPage"
              Title="Detailed Results">
-    <VerticalStackLayout>
-        <HorizontalStackLayout
-            HorizontalOptions="Center"
-            Spacing="50"
-            Margin="0, 50, 0, 0">
-            <Button 
-                Text="View Results Summary"
-                WidthRequest="200"
-                HeightRequest="50"
-                Clicked="ResultsSummary"/>
-            <Button 
-                Text="View Detailed Results"
-                WidthRequest="200"
-                HeightRequest="50"/>
-            <Button 
-                Text="Exit"
-                WidthRequest="150"
-                HeightRequest="50"
-                Clicked="Exit"/>
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+    <ScrollView
+        WidthRequest="1200">
+        <VerticalStackLayout Spacing="10"
+        WidthRequest="1200">
+            <HorizontalStackLayout
+        HorizontalOptions="Center"
+        Spacing="50"
+        Margin="0, 50, 0, 0">
+                <Button 
+            Text="View Results Summary"
+            WidthRequest="200"
+            HeightRequest="50"
+            Clicked="ResultsSummary"/>
+                <Button 
+            Text="View Detailed Results"
+            WidthRequest="200"
+            HeightRequest="50"/>
+                <Button 
+            Text="Exit"
+            WidthRequest="150"
+            HeightRequest="50"
+            Clicked="Exit"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout
+        HorizontalOptions="End"
+        VerticalOptions="Center"
+        Spacing="10">
+                <Label
+            Text="Time period:"/>
+                <Picker
+            x:Name="SurveyPicker"
+            WidthRequest="100"/>
+            </HorizontalStackLayout>
+            <Grid
+        ColumnDefinitions="*, 2*"
+        RowDefinitions="*, Auto, Auto, Auto, Auto"
+        ColumnSpacing="10"
+        RowSpacing="5">
+                <Grid
+            Grid.Column="1"
+            RowDefinitions="*, *"
+            ColumnDefinitions="*, *, *, *, *, *, 2*, 2*, 2*, 1.5*, 1.5*, 1.5*, 1.5*, 1.5*"
+            ColumnSpacing="5"
+            RowSpacing="10">
+                    <Label
+                Text="Gender"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"/>
+
+                    <Label
+                Text="Age"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="2"
+                Grid.ColumnSpan="4"/>
+                    <Label
+                Text="Cabin Type"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="6"
+                Grid.ColumnSpan="3"/>
+                    <Label
+                Text="Destination Airport"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="0"
+                Grid.Column="10"
+                Grid.ColumnSpan="5"/>
+
+
+
+                    <Label
+                Text="Male"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="0"/>
+                    <Label
+                Text="Female"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="1"/>
+                    <Label
+                Text="18-24"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="2"/>
+                    <Label
+                Text="25-39"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="3"/>
+                    <Label
+                Text="40-59"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="4"/>
+                    <Label
+                Text="60+"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="5"/>
+                    <Label
+                Text="Economy"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="6"/>
+                    <Label
+                Text="Business"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="7"/>
+                    <Label
+                Text="First Class"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="8"/>
+                    <Label
+                Text="AUH"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="9"/>
+                    <Label
+                Text="BAH"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="10"/>
+                    <Label
+                Text="DOH"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="11"/>
+                    <Label
+                Text="RUH"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="12"/>
+                    <Label
+                Text="CAI"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                Grid.Column="13"/>
+
+                </Grid>
+
+                <VerticalStackLayout
+            Grid.Row="1"
+            Spacing="5">
+                    <Label
+                Text="Please rate our aircraft flown on AMONIC Airlines"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                FontFamily="TexBold"/>
+                    <Label
+                Text="Outstanding"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+                    <Label
+                Text="Very Good"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+                    <Label
+                Text="Good"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+                    <Label
+                Text="Adequate"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+                    <Label
+                Text="Needs Improvement"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+                    <Label
+                Text="Poor"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+                    <Label
+                Text="Don't know"
+                HorizontalOptions="End"
+                VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout
+ Grid.Row="2"
+ Spacing="5">
+                    <Label
+     Text="How would you rate our flight attendants"
+     HorizontalOptions="Start"
+     VerticalOptions="Center"
+     FontFamily="TexBold"/>
+                    <Label
+     Text="Outstanding"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Very Good"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Good"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Adequate"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Needs Improvement"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Poor"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Don't know"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout
+ Grid.Row="3"
+ Spacing="5">
+                    <Label
+     Text="How would you rate our inflight entertainment"
+     HorizontalOptions="Start"
+     VerticalOptions="Center"
+     FontFamily="TexBold"/>
+                    <Label
+     Text="Outstanding"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Very Good"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Good"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Adequate"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Needs Improvement"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Poor"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Don't know"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+
+                <VerticalStackLayout
+ Grid.Row="4"
+ Spacing="5">
+                    <Label
+     Text="Please rate the ticket price for the trip you are taking"
+     HorizontalOptions="Start"
+     VerticalOptions="Center"
+     FontFamily="TexBold"/>
+                    <Label
+     Text="Outstanding"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Very Good"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Good"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Adequate"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Needs Improvement"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Poor"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                    <Label
+     Text="Don't know"
+     HorizontalOptions="End"
+     VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
