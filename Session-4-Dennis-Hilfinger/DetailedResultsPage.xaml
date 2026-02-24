@@ -3,325 +3,879 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Session_4_Dennis_Hilfinger.DetailedResultsPage"
              Title="Detailed Results">
-    <ScrollView
-        WidthRequest="1200">
-        <VerticalStackLayout Spacing="10"
-        WidthRequest="1200">
-            <HorizontalStackLayout
-        HorizontalOptions="Center"
-        Spacing="50"
-        Margin="0, 50, 0, 0">
-                <Button 
-            Text="View Results Summary"
-            WidthRequest="200"
-            HeightRequest="50"
-            Clicked="ResultsSummary"/>
-                <Button 
-            Text="View Detailed Results"
-            WidthRequest="200"
-            HeightRequest="50"/>
-                <Button 
-            Text="Exit"
-            WidthRequest="150"
-            HeightRequest="50"
-            Clicked="Exit"/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout
-        HorizontalOptions="End"
-        VerticalOptions="Center"
-        Spacing="10">
-                <Label
-            Text="Time period:"/>
-                <Picker
-            x:Name="SurveyPicker"
-            WidthRequest="100"/>
-            </HorizontalStackLayout>
+
+    <Grid
+        RowDefinitions="Auto, Auto, *, Auto"
+        RowSpacing="10">
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            Spacing="50"
+            Margin="0, 50, 0, 0"
+            Grid.Row="0">
+            <Button 
+                Text="View Results Summary"
+                WidthRequest="200"
+                HeightRequest="50"
+                Clicked="ResultsSummary"/>
+            <Button 
+                Text="View Detailed Results"
+                WidthRequest="200"
+                HeightRequest="50"/>
+            <Button 
+                Text="Exit"
+                WidthRequest="150"
+                HeightRequest="50"
+                Clicked="Exit"/>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout
+            HorizontalOptions="End"
+            VerticalOptions="Center"
+            Spacing="10"
+            Grid.Row="1">
+            <Label
+                Text="Time period:"/>
+            <Picker
+                x:Name="SurveyPicker"
+                WidthRequest="100"
+                SelectedIndexChanged="LoadData"/>
+        </HorizontalStackLayout>
+        <ScrollView
+            Grid.Row="2"
+            Orientation="Both">
             <Grid
-        ColumnDefinitions="*, 2*"
-        RowDefinitions="*, Auto, Auto, Auto, Auto"
-        ColumnSpacing="10"
-        RowSpacing="5">
+                ColumnDefinitions="*, 2*"
+                RowDefinitions="*, Auto, Auto, Auto, Auto"
+                ColumnSpacing="10"
+                RowSpacing="5"
+                WidthRequest="1400"
+                Padding="10">
                 <Grid
-            Grid.Column="1"
-            RowDefinitions="*, *"
-            ColumnDefinitions="*, *, *, *, *, *, 2*, 2*, 2*, 1.5*, 1.5*, 1.5*, 1.5*, 1.5*"
-            ColumnSpacing="5"
-            RowSpacing="10">
+                    Grid.Column="1"
+                    RowDefinitions="*, *"
+                    ColumnDefinitions="*, 1.5*, 1.5*, *, *, *, *, 2*, 2*, 2*, 1.5*, 1.5*, 1.5*, 1.5*, 1.5*"
+                    ColumnSpacing="5"
+                    RowSpacing="10">
                     <Label
-                Text="Gender"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"/>
+                        Text="Gender"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"/>
 
                     <Label
-                Text="Age"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="0"
-                Grid.Column="2"
-                Grid.ColumnSpan="4"/>
+                        Text="Age"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="4"/>
                     <Label
-                Text="Cabin Type"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="0"
-                Grid.Column="6"
-                Grid.ColumnSpan="3"/>
+                        Text="Cabin Type"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="7"
+                        Grid.ColumnSpan="3"/>
                     <Label
-                Text="Destination Airport"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="0"
-                Grid.Column="10"
-                Grid.ColumnSpan="5"/>
+                        Text="Destination Airport"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="11"
+                        Grid.ColumnSpan="5"/>
 
 
 
                     <Label
-                Text="Male"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="0"/>
+                        Text="Total"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="0"/>
                     <Label
-                Text="Female"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="1"/>
+                        Text="Male"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="1"/>
                     <Label
-                Text="18-24"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="2"/>
+                        Text="Female"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="2"/>
                     <Label
-                Text="25-39"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="3"/>
+                        Text="18-24"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="3"/>
                     <Label
-                Text="40-59"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="4"/>
+                        Text="25-39"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="4"/>
                     <Label
-                Text="60+"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="5"/>
+                        Text="40-59"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="5"/>
                     <Label
-                Text="Economy"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="6"/>
+                        Text="60+"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="6"/>
                     <Label
-                Text="Business"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="7"/>
+                        Text="Economy"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="7"/>
                     <Label
-                Text="First Class"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="8"/>
+                        Text="Business"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="8"/>
                     <Label
-                Text="AUH"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="9"/>
+                        Text="First Class"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="9"/>
                     <Label
-                Text="BAH"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="10"/>
+                        Text="AUH"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="10"/>
                     <Label
-                Text="DOH"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="11"/>
+                        Text="BAH"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="11"/>
                     <Label
-                Text="RUH"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="12"/>
+                        Text="DOH"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="12"/>
                     <Label
-                Text="CAI"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Grid.Row="1"
-                Grid.Column="13"/>
+                        Text="RUH"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="13"/>
+                    <Label
+                        Text="CAI"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Grid.Column="14"/>
 
                 </Grid>
 
                 <VerticalStackLayout
-            Grid.Row="1"
-            Spacing="5">
+                    Grid.Row="1"
+                    Spacing="5">
                     <Label
-                Text="Please rate our aircraft flown on AMONIC Airlines"
-                HorizontalOptions="Start"
-                VerticalOptions="Center"
-                FontFamily="TexBold"/>
+                        Text="Please rate our aircraft flown on AMONIC Airlines"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        FontFamily="TexBold"/>
                     <Label
-                Text="Outstanding"
-                HorizontalOptions="End"
-                VerticalOptions="Center"/>
+                        Text="Outstanding"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-                Text="Very Good"
-                HorizontalOptions="End"
-                VerticalOptions="Center"/>
+                        Text="Very Good"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-                Text="Good"
-                HorizontalOptions="End"
-                VerticalOptions="Center"/>
+                        Text="Good"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-                Text="Adequate"
-                HorizontalOptions="End"
-                VerticalOptions="Center"/>
+                        Text="Adequate"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-                Text="Needs Improvement"
-                HorizontalOptions="End"
-                VerticalOptions="Center"/>
+                        Text="Needs Improvement"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-                Text="Poor"
-                HorizontalOptions="End"
-                VerticalOptions="Center"/>
+                        Text="Poor"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-                Text="Don't know"
-                HorizontalOptions="End"
-                VerticalOptions="Center"/>
+                        Text="Don't know"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                 </VerticalStackLayout>
+
+
+                <Grid
+                    RowDefinitions="*, *, *, *, *, *, *, *"
+                    Grid.Column="1"
+                    Grid.Row="1">
+                    <CollectionView
+                        x:Name="Question1View"
+                        Grid.Row="1"
+                        Grid.RowSpan="7">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Grid.Column="1"
+                                    ColumnDefinitions="*, 1.5*, 1.5*, *, *, *, *, 2*, 2*, 2*, 1.5*, 1.5*, 1.5*, 1.5*, 1.5*"
+                                    HeightRequest="26"
+                                    ColumnSpacing="5"
+                                    RowSpacing="20">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Style.Triggers>
+                                                <DataTrigger 
+                                                    TargetType="Grid" 
+                                                    Binding="{Binding DifferentBackground}" 
+                                                    Value="True">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+
+                                    <Label
+                                        Text="{Binding TotalCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Text="{Binding MaleCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="1"
+                                        IsVisible="{Binding ShowMale}"/>
+                                    <Label
+                                        Text="{Binding FemaleCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="2"
+                                        IsVisible="{Binding ShowFemale}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryEighteenCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="3"
+                                        IsVisible="{Binding ShowEighteen}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryTwentyfiveCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="4"
+                                        IsVisible="{Binding ShowTwentyfive}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryFourtyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="5"
+                                        IsVisible="{Binding ShowFourty}"/>
+                                    <Label
+                                        Text="{Binding AgeCategorySixtyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="6"
+                                        IsVisible="{Binding ShowSixty}"/>
+                                    <Label
+                                        Text="{Binding EconomyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="7"/>
+                                    <Label
+                                        Text="{Binding BusinessCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="8"/>
+                                    <Label
+                                        Text="{Binding FirstClassCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="9"/>
+                                    <Label
+                                        Text="{Binding AuhCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="10"/>
+                                    <Label
+                                        Text="{Binding BahCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="11"/>
+                                    <Label
+                                        Text="{Binding DohCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="12"/>
+                                    <Label
+                                        Text="{Binding RuhCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="13"/>
+                                    <Label
+                                        Text="{Binding CaiCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="14"/>
+
+                                </Grid>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
 
                 <VerticalStackLayout
- Grid.Row="2"
- Spacing="5">
+                     Grid.Row="2"
+                     Spacing="5">
                     <Label
-     Text="How would you rate our flight attendants"
-     HorizontalOptions="Start"
-     VerticalOptions="Center"
-     FontFamily="TexBold"/>
+                         Text="How would you rate our flight attendants"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         FontFamily="TexBold"/>
                     <Label
-     Text="Outstanding"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Outstanding"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-     Text="Very Good"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Very Good"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-     Text="Good"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Good"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-     Text="Adequate"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Adequate"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-     Text="Needs Improvement"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Needs Improvement"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-     Text="Poor"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Poor"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-     Text="Don't know"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Don't know"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                 </VerticalStackLayout>
+
+                <Grid
+                    RowDefinitions="*, *, *, *, *, *, *, *"
+                    Grid.Column="1"
+                    Grid.Row="2">
+                    <CollectionView
+                        x:Name="Question2View"
+                        Grid.Row="1"
+                        Grid.RowSpan="7">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Grid.Column="1"
+                                    ColumnDefinitions="*, 1.5*, 1.5*, *, *, *, *, 2*, 2*, 2*, 1.5*, 1.5*, 1.5*, 1.5*, 1.5*"
+                                    HeightRequest="26"
+                                    ColumnSpacing="5"
+                                    RowSpacing="20">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Style.Triggers>
+                                                <DataTrigger 
+                                                    TargetType="Grid" 
+                                                    Binding="{Binding DifferentBackground}" 
+                                                    Value="True">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+
+                                    <Label
+                                        Text="{Binding TotalCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Text="{Binding MaleCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="1"
+                                        IsVisible="{Binding ShowMale}"/>
+                                    <Label
+                                        Text="{Binding FemaleCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="2"
+                                        IsVisible="{Binding ShowFemale}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryEighteenCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="3"
+                                        IsVisible="{Binding ShowEighteen}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryTwentyfiveCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="4"
+                                        IsVisible="{Binding ShowTwentyfive}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryFourtyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="5"
+                                        IsVisible="{Binding ShowFourty}"/>
+                                    <Label
+                                        Text="{Binding AgeCategorySixtyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="6"
+                                        IsVisible="{Binding ShowSixty}"/>
+                                    <Label
+                                        Text="{Binding EconomyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="7"/>
+                                    <Label
+                                        Text="{Binding BusinessCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="8"/>
+                                    <Label
+                                        Text="{Binding FirstClassCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="9"/>
+                                    <Label
+                                        Text="{Binding AuhCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="10"/>
+                                    <Label
+                                        Text="{Binding BahCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="11"/>
+                                    <Label
+                                        Text="{Binding DohCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="12"/>
+                                    <Label
+                                        Text="{Binding RuhCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="13"/>
+                                    <Label
+                                        Text="{Binding CaiCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="14"/>
+
+                                </Grid>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
 
                 <VerticalStackLayout
- Grid.Row="3"
- Spacing="5">
+                     Grid.Row="3"
+                     Spacing="5">
                     <Label
-     Text="How would you rate our inflight entertainment"
-     HorizontalOptions="Start"
-     VerticalOptions="Center"
-     FontFamily="TexBold"/>
+                         Text="How would you rate our inflight entertainment"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         FontFamily="TexBold"/>
                     <Label
-     Text="Outstanding"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Outstanding"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-     Text="Very Good"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Very Good"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-     Text="Good"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Good"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-     Text="Adequate"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Adequate"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-     Text="Needs Improvement"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Needs Improvement"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-     Text="Poor"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Poor"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-     Text="Don't know"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Don't know"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                 </VerticalStackLayout>
 
+                <Grid
+                    RowDefinitions="*, *, *, *, *, *, *, *"
+                    Grid.Column="1"
+                    Grid.Row="3">
+                    <CollectionView
+                        x:Name="Question3View"
+                        Grid.Row="1"
+                        Grid.RowSpan="7">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Grid.Column="1"
+                                    ColumnDefinitions="*, 1.5*, 1.5*, *, *, *, *, 2*, 2*, 2*, 1.5*, 1.5*, 1.5*, 1.5*, 1.5*"
+                                    HeightRequest="26"
+                                    ColumnSpacing="5"
+                                    RowSpacing="20">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Style.Triggers>
+                                                <DataTrigger 
+                                                    TargetType="Grid" 
+                                                    Binding="{Binding DifferentBackground}" 
+                                                    Value="True">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+
+                                    <Label
+                                        Text="{Binding TotalCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Text="{Binding MaleCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="1"
+                                        IsVisible="{Binding ShowMale}"/>
+                                    <Label
+                                        Text="{Binding FemaleCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="2"
+                                        IsVisible="{Binding ShowFemale}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryEighteenCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="3"
+                                        IsVisible="{Binding ShowEighteen}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryTwentyfiveCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="4"
+                                        IsVisible="{Binding ShowTwentyfive}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryFourtyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="5"
+                                        IsVisible="{Binding ShowFourty}"/>
+                                    <Label
+                                        Text="{Binding AgeCategorySixtyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="6"
+                                        IsVisible="{Binding ShowSixty}"/>
+                                    <Label
+                                        Text="{Binding EconomyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="7"/>
+                                    <Label
+                                        Text="{Binding BusinessCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="8"/>
+                                    <Label
+                                        Text="{Binding FirstClassCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="9"/>
+                                    <Label
+                                        Text="{Binding AuhCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="10"/>
+                                    <Label
+                                        Text="{Binding BahCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="11"/>
+                                    <Label
+                                        Text="{Binding DohCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="12"/>
+                                    <Label
+                                        Text="{Binding RuhCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="13"/>
+                                    <Label
+                                        Text="{Binding CaiCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="14"/>
+
+                                </Grid>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
 
                 <VerticalStackLayout
- Grid.Row="4"
- Spacing="5">
+                     Grid.Row="4"
+                     Spacing="5">
                     <Label
-     Text="Please rate the ticket price for the trip you are taking"
-     HorizontalOptions="Start"
-     VerticalOptions="Center"
-     FontFamily="TexBold"/>
+                         Text="Please rate the ticket price for the trip you are taking"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"
+                         FontFamily="TexBold"/>
                     <Label
-     Text="Outstanding"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Outstanding"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-     Text="Very Good"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Very Good"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-     Text="Good"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Good"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-     Text="Adequate"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Adequate"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-     Text="Needs Improvement"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Needs Improvement"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                     <Label
-     Text="Poor"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Poor"
+                        VerticalOptions="Center"
+                        BackgroundColor="LightBlue"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="End"/>
                     <Label
-     Text="Don't know"
-     HorizontalOptions="End"
-     VerticalOptions="Center"/>
+                        Text="Don't know"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
                 </VerticalStackLayout>
+
+                <Grid
+                    RowDefinitions="*, *, *, *, *, *, *, *"
+                    Grid.Column="1"
+                    Grid.Row="4">
+                    <CollectionView
+                        x:Name="Question4View"
+                        Grid.Row="1"
+                        Grid.RowSpan="7">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    Grid.Column="1"
+                                    ColumnDefinitions="*, 1.5*, 1.5*, *, *, *, *, 2*, 2*, 2*, 1.5*, 1.5*, 1.5*, 1.5*, 1.5*"
+                                    HeightRequest="26"
+                                    ColumnSpacing="5"
+                                    RowSpacing="20">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Style.Triggers>
+                                                <DataTrigger 
+                                                    TargetType="Grid" 
+                                                    Binding="{Binding DifferentBackground}" 
+                                                    Value="True">
+                                                    <Setter Property="BackgroundColor" Value="LightBlue"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+
+                                    <Label
+                                        Text="{Binding TotalCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="0"/>
+                                    <Label
+                                        Text="{Binding MaleCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="1"
+                                        IsVisible="{Binding ShowMale}"/>
+                                    <Label
+                                        Text="{Binding FemaleCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="2"
+                                        IsVisible="{Binding ShowFemale}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryEighteenCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="3"
+                                        IsVisible="{Binding ShowEighteen}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryTwentyfiveCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="4"
+                                        IsVisible="{Binding ShowTwentyfive}"/>
+                                    <Label
+                                        Text="{Binding AgeCategoryFourtyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="5"
+                                        IsVisible="{Binding ShowFourty}"/>
+                                    <Label
+                                        Text="{Binding AgeCategorySixtyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="6"
+                                        IsVisible="{Binding ShowSixty}"/>
+                                    <Label
+                                        Text="{Binding EconomyCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="7"/>
+                                    <Label
+                                        Text="{Binding BusinessCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="8"/>
+                                    <Label
+                                        Text="{Binding FirstClassCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="9"/>
+                                    <Label
+                                        Text="{Binding AuhCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="10"/>
+                                    <Label
+                                        Text="{Binding BahCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="11"/>
+                                    <Label
+                                        Text="{Binding DohCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="12"/>
+                                    <Label
+                                        Text="{Binding RuhCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="13"/>
+                                    <Label
+                                        Text="{Binding CaiCount}"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Grid.Column="14"/>
+
+                                </Grid>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
 
             </Grid>
 
-        </VerticalStackLayout>
-    </ScrollView>
+        </ScrollView>
+
+        <Grid
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Grid.Row="3"
+            Margin="10"
+            ColumnDefinitions="Auto, Auto, Auto, 50, Auto, Auto, Auto">
+            <CheckBox
+                x:Name="GenderCheckBox"
+                VerticalOptions="Center"
+                Grid.Column="0"
+                Margin="0, 0, -80, 0"
+                CheckedChanged="LoadData"/>
+            <Label
+                Text="Gender:"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                Margin="0, 0, 10, 0"/>
+            <Picker
+                x:Name="GenderPicker"
+                WidthRequest="150"
+                Grid.Column="2"
+                VerticalOptions="Center"
+                SelectedIndexChanged="LoadData"/>
+
+            <CheckBox
+                x:Name="AgeCheckBox"
+                VerticalOptions="Center"
+                Grid.Column="4"
+                Margin="0, 0, -80, 0"
+                CheckedChanged="LoadData"/>
+            <Label
+                Text="Age:"
+                Grid.Column="5"
+                VerticalOptions="Center"
+                Margin="0, 0, 10, 0"/>
+            <Picker
+                x:Name="AgePicker"
+                WidthRequest="150"
+                Grid.Column="6"
+                VerticalOptions="Center"
+                SelectedIndexChanged="LoadData"/>
+        </Grid>
+    </Grid>
 
 </ContentPage>
