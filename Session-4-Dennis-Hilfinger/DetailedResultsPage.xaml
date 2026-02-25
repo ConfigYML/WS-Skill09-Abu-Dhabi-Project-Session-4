@@ -5,7 +5,7 @@
              Title="Detailed Results">
 
     <Grid
-        RowDefinitions="Auto, Auto, *, Auto"
+        RowDefinitions="Auto, Auto, *, Auto, Auto"
         RowSpacing="10">
         <HorizontalStackLayout
             HorizontalOptions="Center"
@@ -229,6 +229,46 @@
                     RowDefinitions="*, *, *, *, *, *, *, *"
                     Grid.Column="1"
                     Grid.Row="1">
+                    <HorizontalStackLayout
+                        x:Name="Question1VisualizationLayout"
+                        HorizontalOptions="Fill">
+
+                        <Rectangle 
+                            BackgroundColor="Grey"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question1DontRect"/>
+                        <Rectangle 
+                            BackgroundColor="Red"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question1PoorRect"/>
+                        <Rectangle 
+                            BackgroundColor="Orange"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question1ImproveRect"/>
+                        <Rectangle 
+                            BackgroundColor="Yellow"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question1AdeqRect"/>
+                        <Rectangle 
+                            BackgroundColor="LightGreen"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question1GoodRect"/>
+                        <Rectangle 
+                            BackgroundColor="Green"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question1VeryGoodRect"/>
+                        <Rectangle 
+                            BackgroundColor="DarkGreen"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question1OutstandingRect"/>
+                    </HorizontalStackLayout>
                     <CollectionView
                         x:Name="Question1View"
                         Grid.Row="1"
@@ -392,6 +432,46 @@
                     RowDefinitions="*, *, *, *, *, *, *, *"
                     Grid.Column="1"
                     Grid.Row="2">
+                    <HorizontalStackLayout
+                        x:Name="Question2VisualizationLayout"
+                        HorizontalOptions="Fill">
+
+                        <Rectangle 
+                            BackgroundColor="Grey"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question2DontRect"/>
+                        <Rectangle 
+                            BackgroundColor="Red"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question2PoorRect"/>
+                        <Rectangle 
+                            BackgroundColor="Orange"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question2ImproveRect"/>
+                        <Rectangle 
+                            BackgroundColor="Yellow"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question2AdeqRect"/>
+                        <Rectangle 
+                            BackgroundColor="LightGreen"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question2GoodRect"/>
+                        <Rectangle 
+                            BackgroundColor="Green"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question2VeryGoodRect"/>
+                        <Rectangle 
+                            BackgroundColor="DarkGreen"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question2OutstandingRect"/>
+                    </HorizontalStackLayout>
                     <CollectionView
                         x:Name="Question2View"
                         Grid.Row="1"
@@ -554,6 +634,46 @@
                     RowDefinitions="*, *, *, *, *, *, *, *"
                     Grid.Column="1"
                     Grid.Row="3">
+                    <HorizontalStackLayout
+                        x:Name="Question3VisualizationLayout"
+                        HorizontalOptions="Fill">
+
+                        <Rectangle 
+                            BackgroundColor="Grey"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question3DontRect"/>
+                        <Rectangle 
+                            BackgroundColor="Red"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question3PoorRect"/>
+                        <Rectangle 
+                            BackgroundColor="Orange"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question3ImproveRect"/>
+                        <Rectangle 
+                            BackgroundColor="Yellow"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question3AdeqRect"/>
+                        <Rectangle 
+                            BackgroundColor="LightGreen"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question3GoodRect"/>
+                        <Rectangle 
+                            BackgroundColor="Green"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question3VeryGoodRect"/>
+                        <Rectangle 
+                            BackgroundColor="DarkGreen"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question3OutstandingRect"/>
+                    </HorizontalStackLayout>
                     <CollectionView
                         x:Name="Question3View"
                         Grid.Row="1"
@@ -716,6 +836,46 @@
                     RowDefinitions="*, *, *, *, *, *, *, *"
                     Grid.Column="1"
                     Grid.Row="4">
+                    <HorizontalStackLayout
+                        x:Name="Question4VisualizationLayout"
+                        HorizontalOptions="Fill">
+
+                        <Rectangle 
+                            BackgroundColor="Grey"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question4DontRect"/>
+                        <Rectangle 
+                            BackgroundColor="Red"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question4PoorRect"/>
+                        <Rectangle 
+                            BackgroundColor="Orange"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question4ImproveRect"/>
+                        <Rectangle 
+                            BackgroundColor="Yellow"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question4AdeqRect"/>
+                        <Rectangle 
+                            BackgroundColor="LightGreen"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question4GoodRect"/>
+                        <Rectangle 
+                            BackgroundColor="Green"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question4VeryGoodRect"/>
+                        <Rectangle 
+                            BackgroundColor="DarkGreen"
+                            WidthRequest="0"
+                            HeightRequest="10"
+                            x:Name="Question4OutstandingRect"/>
+                    </HorizontalStackLayout>
                     <CollectionView
                         x:Name="Question4View"
                         Grid.Row="1"
@@ -834,10 +994,66 @@
 
         </ScrollView>
 
+        <HorizontalStackLayout
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Grid.Row="3"
+            Spacing="5">
+            <Rectangle 
+                BackgroundColor="DarkGreen"
+                WidthRequest="20"
+                HeightRequest="20"/>
+            <Label 
+                Text="Outstanding"
+                Margin="0, 0, 5, 0"/>
+            <Rectangle 
+                BackgroundColor="Green"
+                WidthRequest="20"
+                HeightRequest="20"/>
+            <Label 
+                Text="Very Good"
+                Margin="0, 0, 5, 0"/>
+            <Rectangle 
+                BackgroundColor="LightGreen"
+                WidthRequest="20"
+                HeightRequest="20"/>
+            <Label 
+                Text="Good"
+                Margin="0, 0, 5, 0"/>
+            <Rectangle 
+                BackgroundColor="Yellow"
+                WidthRequest="20"
+                HeightRequest="20"/>
+            <Label 
+                Text="Adequate"
+                Margin="0, 0, 5, 0"/>
+            <Rectangle 
+                BackgroundColor="Orange"
+                WidthRequest="20"
+                HeightRequest="20"/>
+            <Label 
+                Text="Needs Improvement"
+                Margin="0, 0, 5, 0"/>
+            <Rectangle 
+                BackgroundColor="Red"
+                WidthRequest="20"
+                HeightRequest="20"/>
+            <Label 
+                Text="Poor"
+                Margin="0, 0, 5, 0"/>
+            <Rectangle 
+                BackgroundColor="Grey"
+                WidthRequest="20"
+                HeightRequest="20"/>
+            <Label 
+                Text="Don't know"
+                Margin="0, 0, 5, 0"/>
+        </HorizontalStackLayout>
+
         <Grid
             HorizontalOptions="Center"
             VerticalOptions="Center"
-            Grid.Row="3"
+            Grid.Row="4"
             Margin="10"
             ColumnDefinitions="Auto, Auto, Auto, 50, Auto, Auto, Auto">
             <CheckBox

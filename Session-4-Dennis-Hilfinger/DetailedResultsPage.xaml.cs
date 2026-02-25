@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Maui.Controls.Shapes;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -107,10 +108,10 @@ public partial class DetailedResultsPage : ContentPage
             }
 
 
-            List<IQueryable<SurveyResult>> question1_markings = new List<IQueryable<SurveyResult>>();
-            List<IQueryable<SurveyResult>> question2_markings = new List<IQueryable<SurveyResult>>();
-            List<IQueryable<SurveyResult>> question3_markings = new List<IQueryable<SurveyResult>>();
-            List<IQueryable<SurveyResult>> question4_markings = new List<IQueryable<SurveyResult>>();
+            List<MarkingDTO> question1_markings = new List<MarkingDTO>();
+            List<MarkingDTO> question2_markings = new List<MarkingDTO>();
+            List<MarkingDTO> question3_markings = new List<MarkingDTO> ();
+            List<MarkingDTO> question4_markings = new List<MarkingDTO>();
             var question1_Results = db.SurveyResults.Where(sr => sr.Question1 != 0 && sr.SurveyId == surv.Id);
             var question2_Results = db.SurveyResults.Where(sr => sr.Question2 != 0 && sr.SurveyId == surv.Id);
             var question3_Results = db.SurveyResults.Where(sr => sr.Question3 != 0 && sr.SurveyId == surv.Id);
@@ -188,37 +189,162 @@ public partial class DetailedResultsPage : ContentPage
                 
             }
 
-            question1_markings.Add(question1_Results.Where(r => r.Question1 == 1));
-            question1_markings.Add(question1_Results.Where(r => r.Question1 == 2));
-            question1_markings.Add(question1_Results.Where(r => r.Question1 == 3));
-            question1_markings.Add(question1_Results.Where(r => r.Question1 == 4));
-            question1_markings.Add(question1_Results.Where(r => r.Question1 == 5));
-            question1_markings.Add(question1_Results.Where(r => r.Question1 == 6));
-            question1_markings.Add(question1_Results.Where(r => r.Question1 == 7));
+            int question1_TotalCount = question1_Results.Count();
+            int question2_TotalCount = question2_Results.Count();
+            int question3_TotalCount = question3_Results.Count();
+            int question4_TotalCount = question4_Results.Count();
 
-            question2_markings.Add(question2_Results.Where(r => r.Question1 == 1));
-            question2_markings.Add(question2_Results.Where(r => r.Question1 == 2));
-            question2_markings.Add(question2_Results.Where(r => r.Question1 == 3));
-            question2_markings.Add(question2_Results.Where(r => r.Question1 == 4));
-            question2_markings.Add(question2_Results.Where(r => r.Question1 == 5));
-            question2_markings.Add(question2_Results.Where(r => r.Question1 == 6));
-            question2_markings.Add(question2_Results.Where(r => r.Question1 == 7));
+            // Question 1
+            question1_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Outstanding",
+                result = question1_Results.Where(r => r.Question1 == 1)
+            });
+            question1_markings.Add(new MarkingDTO
+            {
+                MarkingName = "VeryGood",
+                result = question1_Results.Where(r => r.Question1 == 2)
+            });
+            question1_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Good",
+                result = question1_Results.Where(r => r.Question1 == 3)
+            });
+            question1_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Adeq",
+                result = question1_Results.Where(r => r.Question1 == 4)
+            });
+            question1_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Improve",
+                result = question1_Results.Where(r => r.Question1 == 5)
+            });
+            question1_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Poor",
+                result = question1_Results.Where(r => r.Question1 == 6)
+            });
+            question1_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Dont",
+                result = question1_Results.Where(r => r.Question1 == 7)
+            });
 
-            question3_markings.Add(question3_Results.Where(r => r.Question1 == 1));
-            question3_markings.Add(question3_Results.Where(r => r.Question1 == 2));
-            question3_markings.Add(question3_Results.Where(r => r.Question1 == 3));
-            question3_markings.Add(question3_Results.Where(r => r.Question1 == 4));
-            question3_markings.Add(question3_Results.Where(r => r.Question1 == 5));
-            question3_markings.Add(question3_Results.Where(r => r.Question1 == 6));
-            question3_markings.Add(question3_Results.Where(r => r.Question1 == 7));
 
-            question4_markings.Add(question4_Results.Where(r => r.Question1 == 1));
-            question4_markings.Add(question4_Results.Where(r => r.Question1 == 2));
-            question4_markings.Add(question4_Results.Where(r => r.Question1 == 3));
-            question4_markings.Add(question4_Results.Where(r => r.Question1 == 4));
-            question4_markings.Add(question4_Results.Where(r => r.Question1 == 5));
-            question4_markings.Add(question4_Results.Where(r => r.Question1 == 6));
-            question4_markings.Add(question4_Results.Where(r => r.Question1 == 7));
+            // Question 2
+            question2_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Outstanding",
+                result = question2_Results.Where(r => r.Question2 == 1)
+            });
+            question2_markings.Add(new MarkingDTO
+            {
+                MarkingName = "VeryGood",
+                result = question2_Results.Where(r => r.Question2 == 2)
+            });
+            question2_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Good",
+                result = question2_Results.Where(r => r.Question2 == 3)
+            });
+            question2_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Adeq",
+                result = question2_Results.Where(r => r.Question2 == 4)
+            });
+            question2_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Improve",
+                result = question2_Results.Where(r => r.Question2 == 5)
+            });
+            question2_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Poor",
+                result = question2_Results.Where(r => r.Question2 == 6)
+            });
+            question2_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Dont",
+                result = question2_Results.Where(r => r.Question2 == 7)
+            });
+
+            
+            // Question 3
+            question3_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Outstanding",
+                result = question3_Results.Where(r => r.Question3 == 1)
+            });
+            question3_markings.Add(new MarkingDTO
+            {
+                MarkingName = "VeryGood",
+                result = question3_Results.Where(r => r.Question3 == 2)
+            });
+            question3_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Good",
+                result = question3_Results.Where(r => r.Question3 == 3)
+            });
+            question3_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Adeq",
+                result = question3_Results.Where(r => r.Question3 == 4)
+            });
+            question3_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Improve",
+                result = question3_Results.Where(r => r.Question3 == 5)
+            });
+            question3_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Poor",
+                result = question3_Results.Where(r => r.Question3 == 6)
+            });
+            question3_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Dont",
+                result = question3_Results.Where(r => r.Question3 == 7)
+            });
+
+
+
+            // Question 4
+            question4_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Outstanding",
+                result = question4_Results.Where(r => r.Question4 == 1)
+            });
+            question4_markings.Add(new MarkingDTO
+            {
+                MarkingName = "VeryGood",
+                result = question4_Results.Where(r => r.Question4 == 2)
+            });
+            question4_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Good",
+                result = question4_Results.Where(r => r.Question4 == 3)
+            });
+            question4_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Adeq",
+                result = question4_Results.Where(r => r.Question4 == 4)
+            });
+            question4_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Improve",
+                result = question4_Results.Where(r => r.Question4 == 5)
+            });
+            question4_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Poor",
+                result = question4_Results.Where(r => r.Question4 == 6)
+            });
+            question4_markings.Add(new MarkingDTO
+            {
+                MarkingName = "Dont",
+                result = question4_Results.Where(r => r.Question4 == 7)
+            });
 
             bool diffBack = false;
             Question1_Results.Clear();
@@ -226,8 +352,10 @@ public partial class DetailedResultsPage : ContentPage
             Question3_Results.Clear();
             Question4_Results.Clear();
 
-            foreach (var marking in question1_markings)
+            foreach (var data in question1_markings)
             {
+
+                var marking = data.result;
                 int totalCount = marking.Count();
                 int maleCount = marking.Where(m => m.Gender == "M").Count();
                 int femaleCount = marking.Where(m => m.Gender == "F").Count();
@@ -269,13 +397,25 @@ public partial class DetailedResultsPage : ContentPage
                     CaiCount = caiCount.ToString(),
                     DifferentBackground = diffBack
                 });
+
+                double percentage = double.Parse(totalCount.ToString()) / double.Parse(question1_TotalCount.ToString());
+                double maxWidth = Question1VisualizationLayout.Width;
+                Rectangle element = FindByName($"Question1{data.MarkingName}Rect") as Rectangle;
+                if (element != null)
+                {
+                    element.WidthRequest = maxWidth * percentage;
+                }
+
                 diffBack = !diffBack;
             }
 
+            
+
             diffBack = false;
 
-            foreach (var marking in question2_markings)
+            foreach (var data in question2_markings)
             {
+                var marking = data.result;
                 int totalCount = marking.Count();
                 int maleCount = marking.Where(m => m.Gender == "M").Count();
                 int femaleCount = marking.Where(m => m.Gender == "F").Count();
@@ -317,14 +457,25 @@ public partial class DetailedResultsPage : ContentPage
                     CaiCount = caiCount.ToString(),
                     DifferentBackground = diffBack
                 });
+
+                double percentage = double.Parse(totalCount.ToString()) / double.Parse(question2_TotalCount.ToString());
+                double maxWidth = Question2VisualizationLayout.Width;
+                Rectangle element = FindByName($"Question2{data.MarkingName}Rect") as Rectangle;
+                if (element != null)
+                {
+                    var elementWidth = maxWidth * percentage;
+                    element.WidthRequest = elementWidth;
+                }
+
                 diffBack = !diffBack;
             }
 
 
             diffBack = false;
 
-            foreach (var marking in question3_markings)
+            foreach (var data in question3_markings)
             {
+                var marking = data.result;
                 int totalCount = marking.Count();
                 int maleCount = marking.Where(m => m.Gender == "M").Count();
                 int femaleCount = marking.Where(m => m.Gender == "F").Count();
@@ -366,14 +517,22 @@ public partial class DetailedResultsPage : ContentPage
                     CaiCount = caiCount.ToString(),
                     DifferentBackground = diffBack
                 });
+                double percentage = double.Parse(totalCount.ToString()) / double.Parse(question3_TotalCount.ToString());
+                double maxWidth = Question3VisualizationLayout.Width;
+                Rectangle element = FindByName($"Question3{data.MarkingName}Rect") as Rectangle;
+                if (element != null)
+                {
+                    element.WidthRequest = maxWidth * percentage;
+                }
                 diffBack = !diffBack;
             }
 
 
             diffBack = false;
 
-            foreach (var marking in question4_markings)
+            foreach (var data in question4_markings)
             {
+                var marking = data.result;
                 int totalCount = marking.Count();
                 int maleCount = marking.Where(m => m.Gender == "M").Count();
                 int femaleCount = marking.Where(m => m.Gender == "F").Count();
@@ -414,7 +573,14 @@ public partial class DetailedResultsPage : ContentPage
                     RuhCount = ruhCount.ToString(),
                     CaiCount = caiCount.ToString(),
                     DifferentBackground = diffBack
-                });
+                }); 
+                double percentage = double.Parse(totalCount.ToString()) / double.Parse(question4_TotalCount.ToString());
+                double maxWidth = Question4VisualizationLayout.Width;
+                Rectangle element = FindByName($"Question4{data.MarkingName}Rect") as Rectangle;
+                if (element != null)
+                {
+                    element.WidthRequest = maxWidth * percentage;
+                }
                 diffBack = !diffBack;
             }
         }
@@ -425,8 +591,15 @@ public partial class DetailedResultsPage : ContentPage
         Application.Current.Quit();
     }
 
+    public class MarkingDTO
+    {
+        public string MarkingName { get; set; }
+        public IQueryable<SurveyResult> result { get; set; }
+    }
+
     public class ResultDTO
     {
+        public int QuestionNumber { get; set; }
         public string TotalCount { get; set; }
         public string MaleCount { get; set; }
         public bool ShowMale { get; set; } = true;
